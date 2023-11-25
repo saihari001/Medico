@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block adminconsultation %}
+<div class="sub_page" style="padding-top: 80px;">
+    <table id="table_id" class="table table-hover table-center mb-0 datatable table-striped table-success">
+        {% if gid %}
+            <thead>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Already Visited</th>
+                <th>Specialist</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Status</th>
+                <th>Prescription</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <form action="" method="POST">
+                {% csrf_token %}
+                <tr>
+                    <td>{{gid.bid}}</td>
+                    <td>{{gid.pfname}} {{i.plname}}</td>
+                    <td>{{gid.pgender}}</td>
+                    <td>{{gid.page}}</td>
+                    <td>{{gid.pemail}}</td>
+                    <td>{{gid.pnumber}}</td>
+                    <td>{{gid.pvisited}}</td>
+                    <td>{{gid.pspecialist}}</td>
+                    <td><input type="date" value="{{gid.pappointdate}}" name="pappointdate">{{gid.pappointdate}}</td>
+                    <td><input type="time" value="{{gid.pappointtime}}" name="pappointtime">{{gid.pappointtime}}</td>
+                    <td><select class="form-select" aria-label="Default select example" name="pstatus" value="{{gid.pstatus}}">
+                        <option value="Appointment Pending">Appointment Pending</option>
+                        <option value="Appointment Confirmed">Appointment Confirmed</option>
+                        <option value="Consultation Completed">Consultation Completed</option>
+                        <option value="Appointment Cancelled">Appointment Cancelled</option>
+                    </select></td>
+                    <td><input type="file" value="{{gid.pprescription}}" name="pprescription"></td>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </form>
+            </tbody>
+                {% else %}
+                <thead>
+                    <th>Booking ID</th>
+                    <th>Name</th>
+                    <th>Already Visited</th>
+                    <th>Specialist</th>
+                    <th>Appointment Date</th>
+                    <th>Appointment Time</th>
+                    <th>Status</th>
+                    <th>Prescription</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.bid}}</td>
+                        <td>{{i.pfname}} {{i.plname}}</td>
+                        <td>{{i.pvisited}}</td>
+                        <td>{{i.pspecialist}}</td>
+                        <td>{{i.pappointdate}}</td>
+                        <td>{{i.pappointtime}}</td>
+                        <td>{{i.pstatus}}</td>
+                        {% if i.pprescription %}
+                        <td><a href="/static/{{i.pprescription}}">View</a></td>
+                        {% else %}
+                        <td>Not Uploaded</td>
+                        {% endif %}
+                        <td><a href="{% url 'consultation' %}/{{i.bid}}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}

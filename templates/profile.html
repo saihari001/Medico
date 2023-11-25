@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block profile %}
+<div class="sub_page mt-5 pt-4">
+    
+    <div class="d-flex justify-content-center align-items-center min-vh-100 mx-auto" style="width: 400px;">
+
+    <!----------------------- Login Container -------------------------->
+
+    <div class="border rounded-5 p-3 bg-white shadow box-area w-90" style="background:linear-gradient(lavender,lavenderblush,lightgray)">
+
+    <!-------------------- ------ Right Box ---------------------------->
+        
+       <div class="m-2">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% if gi %}
+            <div class="row m-4 align-items-center">
+                <div class="header-text mb-4" style="text-align: center;">
+                    <h2>My Profile</h2>
+                </div>
+                <div class="mb-3" style="text-align:center;">
+                    <img src="/static/images/profile-circle-icon-512x512-dt9lf8um.png" alt="" height="100px">
+                    <div class="col-sm-3 input-group">
+                        <div class="col-sm m-3">
+                            <label for="">FirstName</label>
+                            <input type="text" class="form-control" name="fname" value="{{gi.FirstName}}">
+                        </div>
+                        <div class="col-sm m-3">
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control" name="lname" value="{{gi.LastName}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm input-group mb-3">
+                    <div class="col-sm">
+                        <label class="email">Email: </label>
+                        <input type="text" class="form-control" name="gemail" id="email" value="{{gi.Email}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" value="{{gi.Age}}" readonly>
+                    </div>
+                </div>
+                <div class="col-sm input-group mb-3">
+                    <div class="col-sm">
+                        <label for="password">Password: </label>
+                        <input type="password" class="form-control" id="password" value="{{gi.Password}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            {% for i in data %}
+            <div class="row m-4 align-items-center">
+                <div class="header-text mb-4" style="text-align: center;">
+                    <h2>My Profile</h2>
+                </div>
+                <div class="mb-3" style="text-align:center;">
+                    <img src="/static/images/profile-circle-icon-512x512-dt9lf8um.png" alt="" height="100px">
+                    <div class="col-sm input-group mb-3">
+                        <div class="col-sm">
+                            <h4 class="text-primary"><strong>{{i.FirstName}}{{" "}}{{i.LastName}}
+                            </strong><a href="{% url 'profile' %}/{{i.id}}"><i class="bi bi-pencil-square"></i></a></h4>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-sm input-group mb-3">
+                    <div class="col-sm">
+                        <label class="email">Email: </label>
+                        <input type="text" class="form-control" id="email" value="{{i.Email}}" required readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" value="{{i.Age}}" readonly>
+                    </div>
+                </div>
+                <div class="col-sm input-group mb-3">
+                    <div class="col-sm">
+                        <label for="password">Password: </label>
+                        <input type="password" class="form-control" id="password" value="{{i.Password}}" readonly>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </form>
+        </div> 
+    </div>
+    </div>
+<div>
+{% endblock %}

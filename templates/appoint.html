@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" autocomplete="on">
+        {% csrf_token %}
+        {% if gid %}
+        <input type="text" name="pname" placeholder="Enter Name" value="{{gid.pname}}" required>
+        <input type="text" name="gender" value="{{gid.gender}}" placeholder="Enter gender" required>
+        <select class="form-select" aria-label="Default select example" name="astatus" value="{{gid.astatus}}">
+            <option value="Appointment Proccess">Appointment Proccess</option>
+            <option value="Appointment Confirm">Appointment Confirm</option>
+            <option value="Appointment Completed">Appointment Completed</option>
+            <option value="Appointment Cancelled">Appointment Cancelled</option>
+        </select>
+        {% else %}
+        <input type="text" name="pname" placeholder="Enter name" required>
+        <input type="text" name="gender" placeholder="Enter gender" required>
+        {% endif %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

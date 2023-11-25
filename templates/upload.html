@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block images %}
+<div style="margin-top: 100px;">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">UPLOAD</button>
+</form>
+    {% if img_obj %}
+        <h1>Cards</h1>
+        <h1>{{img_obj.title}}</h1>
+        <img src="{{img_obj.image.url}}" alt="connect" style="width: 350px;height:max-content">
+    {% endif %}
+</div>
+{% endblock %}

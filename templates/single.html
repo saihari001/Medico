@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .sub{
+            width: 15%;
+            height: 650px;
+            background-color:aqua;
+            padding-top:50px;
+        }
+        .sub1{
+            width: 85%;
+            height: 650px;
+            background-color:skyblue;
+            padding-left:100px;
+        }
+        .nav{
+            display: block;
+            padding: 10px 20px 20px 30px;
+            margin: 10px 20px 20px 20px;
+            text-decoration: none;
+            color: cadetblue;
+        }
+        i{
+            padding: 4px 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="sub" id="sub">
+            {% for i,j in pages.items %}
+                <h1><a href="#{{j}}">{{i}}</a></h1>
+            {% endfor %}
+        </div>
+        <div class="sub2" id="sub2">
+            <h1 id="mainpage"></h1>
+        </div>
+    </div>
+</body>
+</html>

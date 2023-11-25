@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/review.css"><video src=""></video>
+</head>
+<body>
+    {% if rev %}
+    <a href="{% url 'myappointments' %}"><i class="bi bi-arrow-left fs-2"></i></a>
+    <h2>Hi {{rname}}, Thank you for Rating.<br>
+        {% for i in rate %}
+            <span class="star {{ratecol}}">&starf;</span>
+        {% endfor %}<br>
+        Your feedback is most valuable to us. We will try our utmost best service to fulfill.</h2>
+    {% else %}
+    <div class="container">
+        <span class="star" onclick="st(1)">&starf;</span>
+        <span class="star" onclick="st(2)">&starf;</span>
+        <span class="star" onclick="st(3)">&starf;</span>
+        <span class="star" onclick="st(4)">&starf;</span>
+        <span class="star" onclick="st(5)">&starf;</span>
+        <h4 id="rate">Rating:0/5</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="ratees" name="ratee">
+            <textarea name="comment" placeholder="Comment" cols="40" class="align-items-center"></textarea><br>
+            <button type="submit" class="btn btn-primary">save</button>
+        </form>
+    </div>
+    <script src="/static/rating.js"></script>
+    {% endif %}
+
+</body>
+</html>

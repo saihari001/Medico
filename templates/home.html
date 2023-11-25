@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% block bg_image %}
+<div class="hero_bg_box">
+  <img src="/static/images/hero-bg.png" alt="">
+</div>
+{% endblock %}
+{% block slider %}
+  <!-- slider section -->
+  <!-- slider section -->
+  <section class="slider_section ">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7 mx-2">
+                <div class="detail-box">
+                  <h1>
+                    The Website for Patient 
+                  </h1>
+                  <p>
+                    Website that designed to meet the Patient to Doctor
+                  </p>
+                  <div class="btn-box">
+                    <a href="{% url 'appointment' %}" class="btn1">Book For Consultation</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7 mx-2">
+                <div class="detail-box">
+                  <h1>
+                    The Website for Doctor 
+                  </h1>
+                  <p>
+                    Website that designed to meet the Doctor to Patient
+                  </p>
+                  <div class="btn-box">
+                    <a href="{% url 'appointment' %}" class="btn1">Book For Consultation</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+  </section>
+  </div>
+{% endblock %}
+{% block department %}
+  <!-- department section -->
+  <section class="department_section layout_padding" style="background:linear-gradient(rgb(194, 233, 239),rgb(175, 233, 227));">
+    <div class="department_container">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>
+            Our Departments
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="/static/icon/cardiac.svg" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Cardiology
+                </h5>
+                <p>
+                  Medico leads the league in healthcare when it comes to the deployment of cutting-edge technology for Heart Care. Usage of technology helps in accurate diagnosis and effective treatment of heart diseases, a heart transplants.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="/static/icon/ent.svg" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  ENT
+                </h5>
+                <p>
+                  The institute leads the league in healthcare when it comes to the deployment of cutting-edge technology for Heart Care. Usage of technology helps in accurate diagnosis and effective treatment of ENT.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="/static/icon/osteoporosis.svg" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ortho
+                </h5>
+                <p>Medico is a centre of international repute for complex Bone and Joint related conditions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="/static/icon/neurology.svg" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Neurology
+                </h5>
+                <p>
+                  Medico is led by a team of highly qualified Best neurologists, neurosurgeons, interventional neuro-radiologist, and allied disciplines provide the best possible care for patients.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-box">
+          <a href="">
+            View All
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end department section -->
+{% endblock %}
+
+{% block doctor %}
+<section class="doctor_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Our Doctors
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-lg-4 mx-auto">
+        <div class="box">
+          <div class="img-box">
+            <img src="/static/images/d1.jpg" alt="">
+          </div>
+          <div class="detail-box">
+            <div class="social_box">
+              <a href="">
+                <i class="bi bi-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-youtube" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
+            <h5>
+              Elina Josh
+            </h5>
+            <h6 class="">
+              Doctor
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mx-auto">
+        <div class="box">
+          <div class="img-box">
+            <img src="/static/images/d2.jpg" alt="">
+          </div>
+          <div class="detail-box">
+            <div class="social_box">
+              <a href="">
+                <i class="bi bi-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-youtube" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
+            <h5>
+              Adam View
+            </h5>
+            <h6 class="">
+              Doctor
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mx-auto">
+        <div class="box">
+          <div class="img-box">
+            <img src="/static/images/d3.jpg" alt="">
+          </div>
+          <div class="detail-box">
+            <div class="social_box">
+              <a href="">
+                <i class="bi bi-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-youtube" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="bi bi-linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
+            <h5>
+              Mia Mike
+            </h5>
+            <h6 class="">
+              Doctor
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <a href="">
+        View All
+      </a>
+    </div>
+  </div>
+</section>
+<!-- end doctor section -->
+{% endblock %}
+
+<!-- about section -->
+{% block aboutus %}
+  <section class="about_section layout_margin-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="/static/images/about.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box m-4">
+            <div class="heading_container">
+              <h2>
+                About Us
+              </h2>
+            </div>
+            <p>
+              Medico online Consultation, Chennai renders 360 degree advanced tertiary healthcare services with multi-super speciality and a state-of-the-art multi-organ transplant service. With the finest combination of experience, expertise, state-of-the-art technology and well-coordinated patient-centric teamwork, every step is aimed at ensuring excellence in patient care.
+            </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+  <!-- end about section -->

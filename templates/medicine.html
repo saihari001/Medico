@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block start %}
+<div style="padding-top: 75px;">
+  <nav class="navbar" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-4">
+            <a class="navbar-brand">Navbar</a>
+        </div>
+        <div class="col-md-3">
+            <form class="d-flex" role="search">
+              <input class="form-control align-items-center" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="col-sm-2 mx-auto">
+            <div class="d-flex">
+                <span class="shop-bag"><i class='bi bi-cart-plus-fill fs-5'></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </nav>
+</div>
+{% endblock %}

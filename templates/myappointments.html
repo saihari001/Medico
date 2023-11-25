@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% block myconsultation %}
+<div class="sub_page" style="padding-top: 100px;">
+    <!-- <h2 class="text-center">My Appointment</h2> -->
+    <!-- <table class="table table-bordered table-info table-striped text-color-dark text-align-center">
+        <thead>
+            <th>S.No</th>
+            <th>Booking ID</th>
+            <th>Name</th>
+            <th>Visited</th>
+            <th>Specialist</th>
+            <th>Appointment Date</th>
+            <th>Appointment Time</th>
+            <th>Status</th>
+            <th>Prescription</th>
+            <th>Rating</th>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.bid}}</td>
+                <td>{{i.pfname}} {{i.plname}}</td>
+                <td>{{i.pvisited}}</td>
+                <td>{{i.pspecialist}}</td>
+                <td>{{i.pappointdate}}</td>
+                <td>{{i.pappointtime}}</td>
+                <td>{{i.pstatus}}</td>
+                {% if i.pprescription %}
+                <td><a href="/static/{{i.pprescription}}">Download</a></td>
+                {% else %}
+                <td><p>Consultation Pending.</p></td>
+                {% endif %}
+                {% if i.pstatus == 'Consultation Completed' %}
+                <td><a href="{% url 'rate' %}/{{i.bid}}">Rating</a></td>
+                {% else %}
+                <td><p>Consultation Pending.</p></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Document</title>
+    <style>
+        img{
+            margin: 40px;
+            width: 100px;
+            margin: auto;
+        }
+        h1{
+            text-align: center;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        .personal{
+            background-color: paleturquoise;
+            height: 98vh;
+            width: 300px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .booking{
+            background-color: pink;
+            height: 48vh;
+            width: 300px;
+            margin: 2px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .calender{
+            background-color: rgb(245, 170, 245);
+            height: 48vh;
+            width: 300px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .timing{
+            background-color: beige;
+            height: 48vh;
+            width: 300px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .status{
+            background-color: khaki;
+            height: 48vh;
+            width: 300px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .prescription{
+            background-color:rgb(183, 249, 249);
+            height: 48vh;
+            width: 300px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .rating{
+            background-color: bisque;
+            height: 48vh;
+            width: 300px;
+            margin: 5px;
+            text-align: center;
+            border: 2px solid rgb(0, 247, 255);
+            border-radius: 5px;
+        }
+        .appointcontain{
+            justify-content: center;
+            height: 30vh;
+            margin: 2px;
+            padding: 5px;
+            text-align: center;
+            align-items: center;
+            background-color: aquamarine;
+        }
+        .contain{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    {% if id == None %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="contain">
+        <div class="appointcontain">
+            <h1>Select Booking ID</h1>
+            <select name="bid">
+                {% for g in data %}
+                <option value="{{g.bid}}" aria-checked="true">{{g.bid}}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </div>
+    </form>
+    {% else %}
+    {% for j in data %}
+    <div class="d-flex w-100 m-0 ms-3">
+        <div class="col-3">
+            <div class="personal">
+                <h1>Personal Details</h1>
+                <img src="/static/icon/badge.png" alt="">
+                <h2 style="text-align: center;">{{j.pfname}}</h2>
+                <div class="row g-2">
+                    <div class="col-md-4 ms-auto">
+                        <h4 for="gender">Gender</h4>
+                        <h3 id="gender">{{j.pgender}}</h3>
+                    </div>
+                    <div class="col-md-4 mx-auto">
+                        <h4 for="age">Age</h4>
+                        <h3 id="age">{{j.page}}</h3>
+                    </div>
+                </div><br>
+                <div class="row g-2">
+                    <div class="col">
+                        <h4 for="emaill">Email:</h4>
+                        <h4 id="emaill">{{j.pemail}}</h4>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col">
+                        <h4 for="pnumber">Phone Number:</h4>
+                        <h4 id="pnumber">{{j.pnumber}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="booking">
+                    <h1>Appointment ID</h1>
+                    <img src="/static/icon/booking.png" alt="">
+                    <h1>{{j.bid}}</h1>
+                </div>
+                <div class="calender">
+                    <h1>Appointment Date</h1>
+                    <img src="/static/icon/calendar (2).png" alt="">
+                    <h3>{{j.pappointdate}}</h3>
+                </div>
+                <div class="timing">
+                    <h1>Appointment Time</h1>
+                    <img src="/static/icon/clock (1).png" alt="">
+                    <h1>{{j.pappointtime}}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="status">
+                    <h1>Appointment Status</h1>
+                    <img src="/static/icon/waiting.png" alt="">
+                    <h3>{{j.pstatus}}</h3>
+                </div>
+                <div class="prescription">
+                    <h1>Prescription</h1>
+                    <img src="/static/icon/prescription (1).png" alt="">
+                    {% if j.pprescription %}
+                    <h3><a href="/static/{{j.pprescription}}">Download</a></h3>
+                    {% else %}
+                    <h3>Consultation Pending.</h3>
+                    {% endif %}
+                </div>
+                <div class="rating">
+                    <h1>Rating</h1>
+                    <img src="/static/icon/rating.png" alt="">
+                    {% if i.pstatus == 'Consultation Completed' %}
+                    <h3><a href="{% url 'rate' %}/{{j.bid}}">Rating</a></h3>
+                    {% else %}
+                    <h3>Consultation Pending.</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
